@@ -12,10 +12,10 @@
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="assistant_controller" target="1.5" />
-      <module name="assistant_dao" target="1.5" />
-      <module name="assistant_service" target="1.5" />
-      <module name="personal_assistant" target="1.5" />
+      <module name="assistant_controller" target="1.8" />
+      <module name="assistant_dao" target="1.8" />
+      <module name="assistant_service" target="1.8" />
+      <module name="personal_assistant" target="1.8" />
     </bytecodeTargetLevel>
   </component>
 </project>

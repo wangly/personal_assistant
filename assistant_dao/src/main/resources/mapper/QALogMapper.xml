@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.fzu.pa.dao.mapper.QALogMapper" >
+  <resultMap id="BaseResultMap" type="com.fzu.pa.dao.domain.QALogDO" >
+    <result column="id" property="id" jdbcType="BIGINT" />
+    <result column="question" property="question" jdbcType="VARCHAR" />
+    <result column="answer_type" property="answerType" jdbcType="INTEGER" />
+    <result column="knowledge_ids" property="knowledgeIds" jdbcType="VARCHAR" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="com.fzu.pa.dao.domain.QALogDO" extends="BaseResultMap" >
+    <result column="answer_text" property="answerText" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  <sql id="Blob_Column_List" >
+    answer_text
+  </sql>
+  <insert id="insert" parameterType="com.fzu.pa.dao.domain.QALogDO" >
+    insert into qa_log (id, question, answer_type, knowledge_ids, answer_text)
+    values (#{id}, #{question}, #{answerType}, #{knowledgeIds}, #{answerText})
+  </insert>
+  <insert id="insertSelective" parameterType="com.fzu.pa.dao.domain.QALogDO" >
+    insert into qa_log
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="question != null" >
+        question,
+      </if>
+      <if test="answerType != null" >
+        answer_type,
+      </if>
+      <if test="knowledgeIds != null" >
+        knowledge_ids,
+      </if>
+      <if test="answerText != null" >
+        answer_text,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id},
+      </if>
+      <if test="question != null" >
+        #{question},
+      </if>
+      <if test="answerType != null" >
+        #{answerType},
+      </if>
+      <if test="knowledgeIds != null" >
+        #{knowledgeIds},
+      </if>
+      <if test="answerText != null" >
+        #{answerText},
+      </if>
+    </trim>
+  </insert>
+</mapper>
